@@ -29,7 +29,7 @@ class Config {
         host: "www.a1ex.vip",
         user: "root",
         password: "Vae20.30Peter",
-        database: "ddstore",
+        database: "ddStore",
         port: 3306,
       },
     };

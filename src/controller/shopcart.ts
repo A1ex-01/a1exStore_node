@@ -84,7 +84,6 @@ class ShopCartController {
     );
     const res = await axios.get(result);
     const r = res.data.alipay_trade_query_response;
-    console.log(r);
     if (r.code === "10000") {
       if (r.trade_status === "TRADE_SUCCESS") {
         ctx.body = success("交易成功");

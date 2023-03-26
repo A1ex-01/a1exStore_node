@@ -15,8 +15,12 @@ class CategoryServer {
   async getThirdCtgyByThirdId(thirdId: number) {
     return await thirdCtgy.findAll({ where: { id: thirdId } });
   }
-  async getSecondCtgy(secondId: number) {
-    return await secondCtgy.findOne({ where: { id: secondId } });
+  async getSecondCtgy(secondId?: number) {
+    if (secondId) {
+      return await secondCtgy.findOne({ where: { id: secondId } });
+    } else {
+      return await secondCtgy.findAndCountAll();
+    }
   }
 }
 export default new CategoryServer();

@@ -18,12 +18,13 @@ class EvaluateController {
   @post("/:ISBN")
   async addEvaluateBook(ctx: Context) {
     const { ISBN } = ctx.params;
-    const { content, evaluator } = ctx.request.body;
+    const { content, evaluator, evaluatedegree } = ctx.request.body;
     const result = await evaluateServer.addEvaluateBook(
       ISBN,
       content,
       evaluator,
-      ctx.user.userid
+      ctx.user.userid,
+      evaluatedegree
     );
     ctx.body = success(result);
   }

@@ -13,14 +13,15 @@ class EvaluateServer {
     ISBN: string,
     content: string,
     evaluator: string,
-    userid: number
+    userid: number,
+    evaluatedegree: number
   ) {
     return await evaluate.create({
       isbn: ISBN,
       content,
       evaluator,
+      evaluatedegree,
       givealikenum: 0,
-      evaluatedegree: Math.ceil(Math.random() * 3),
     });
   }
   async applyInfo(evalid: number, replycontent: string, replyor: string) {

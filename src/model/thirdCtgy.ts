@@ -19,6 +19,10 @@ class ThirdCtgy {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
+        cover: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
       },
       { tableName: "thirdctgy", timestamps: false }
     );

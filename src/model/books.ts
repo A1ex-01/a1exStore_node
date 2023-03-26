@@ -50,6 +50,14 @@ class Book {
           type: DataTypes.FLOAT,
           allowNull: false,
         },
+        star: {
+          type: DataTypes.FLOAT,
+          allowNull: false,
+        },
+        desc: {
+          type: DataTypes.FLOAT,
+          allowNull: false,
+        },
       },
       { tableName: "books", timestamps: false }
     );
