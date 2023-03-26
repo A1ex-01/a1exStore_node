@@ -24,6 +24,9 @@ class UserInfo {
         valid: {
           type: DataTypes.INTEGER,
         },
+        phone: {
+          type: DataTypes.STRING,
+        },
       },
       { tableName: "userinfo", timestamps: false }
     );

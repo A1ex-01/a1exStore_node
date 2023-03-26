@@ -21,4 +21,12 @@ class UserInfoController {
     const result = await userInfoServer.getUserInfo(userid);
     ctx.body = success(result);
   }
+  @use(verfyAuth)
+  @post("/edit")
+  async editUserInfo(ctx: Context) {
+    const userid = ctx.user.userid;
+    const userinfo = ctx.request.body;
+    const result = await userInfoServer.editUserInfo(userid, userinfo);
+    ctx.body = success(result);
+  }
 }

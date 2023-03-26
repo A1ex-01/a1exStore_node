@@ -25,6 +25,10 @@ class UserInfoServer {
   async getUserInfo(userid: number) {
     return await userinfo.findOne({ where: { userid } });
   }
+  async editUserInfo(userid: string, user: any) {
+    console.log(user);
+    return await userinfo.update({ ...user }, { where: { userid } });
+  }
 }
 
 export default new UserInfoServer();
