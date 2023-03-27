@@ -34,4 +34,14 @@ class OrderInfoController {
     );
     ctx.body = success(result);
   }
+  @use(verfyAuth)
+  @post("/:order_id")
+  async getOrderInfoById(ctx: Context) {
+    const { order_id } = ctx.params;
+    const result = await orderInfoServer.getOrderInfoById(
+      order_id,
+      ctx.user.userid
+    );
+    ctx.body = success(result);
+  }
 }

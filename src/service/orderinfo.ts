@@ -44,6 +44,13 @@ class OrderInfoServer {
     result.count = count;
     return result;
   }
+  async getOrderInfoById(order_id: string, customerid: number) {
+    const result = await orderInfo.findOne({
+      where: { customerid, id: order_id },
+      include: [{ model: orderDetail, as: "orderdetails" }],
+    });
+    return result;
+  }
 }
 
 export default new OrderInfoServer();
