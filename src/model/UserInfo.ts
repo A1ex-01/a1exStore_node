@@ -14,6 +14,10 @@ class UserInfo {
           type: DataTypes.STRING,
           allowNull: false,
         },
+        nickname: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
         psw: {
           type: DataTypes.STRING,
           allowNull: false,
