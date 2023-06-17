@@ -41,6 +41,10 @@ class Merchant {
           type: DataTypes.TIME,
           allowNull: false,
         },
+        merchant_psw: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
         status: {
           type: DataTypes.STRING,
           allowNull: false,

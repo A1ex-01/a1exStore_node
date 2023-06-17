@@ -22,5 +22,8 @@ class CategoryServer {
       return await secondCtgy.findAndCountAll();
     }
   }
+  async getThirdCtgy() {
+    return await thirdCtgy.findAndCountAll();
+  }
 }
 export default new CategoryServer();

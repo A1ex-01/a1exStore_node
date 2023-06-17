@@ -13,10 +13,16 @@ class UserInfo {
         username: {
           type: DataTypes.STRING,
           allowNull: false,
+          validate: {
+            len: [3, 12],
+          },
         },
         nickname: {
           type: DataTypes.STRING,
           allowNull: false,
+          validate: {
+            len: [3, 12],
+          },
         },
         psw: {
           type: DataTypes.STRING,
@@ -30,6 +36,9 @@ class UserInfo {
         },
         phone: {
           type: DataTypes.STRING,
+          validate: {
+            len: [9, 11],
+          },
         },
       },
       { tableName: "userinfo", timestamps: false }

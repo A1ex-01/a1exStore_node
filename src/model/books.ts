@@ -55,7 +55,7 @@ class Book {
           allowNull: false,
         },
         desc: {
-          type: DataTypes.FLOAT,
+          type: DataTypes.STRING,
           allowNull: false,
         },
       },

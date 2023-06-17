@@ -10,9 +10,15 @@ import userInfoServer from "../service/userinfo";
 class MerchantController {
   // @use(verfyAuth)
   @get("/:id")
-  async login(ctx: Context) {
+  async getMechantInfo(ctx: Context) {
     const { id } = ctx.params;
     const result = await merchantServer.findOne(id);
     ctx.body = success(result, result ? "" : "商家不存在~");
+  }
+  @post("/")
+  async login(ctx: Context) {
+    const { merchant_email, merchant_psw } = ctx.request.body;
+    const result = await merchantServer.find(merchant_email, merchant_psw);
+    ctx.body = success(result, result ? "" : "商家不存在获密码错误~");
   }
 }

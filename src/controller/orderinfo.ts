@@ -11,14 +11,15 @@ class OrderInfoController {
   @post("/")
   async addOrderInfo(ctx: Context) {
     const customerid = ctx.user.userid;
-    const { orderDetailList } = ctx.request.body;
+    const { orderDetailList, address } = ctx.request.body;
     if (!orderDetailList.length) {
       ctx.body = fail("书本不能为空");
       return;
     }
     const result = await orderInfoServer.addOrderInfo(
       orderDetailList,
-      customerid
+      customerid,
+      address
     );
     // 删除购物车
     ctx.body = success(result);

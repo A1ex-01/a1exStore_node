@@ -17,8 +17,8 @@ class BookServer {
       where: { thirdctgyid: id },
     });
   }
-  async findBooksByKeyword(keyword: string) {
-    return await book.findAll({
+  async findBooksByKeyword(keyword: string, offset: number) {
+    return await book.findAndCountAll({
       where: {
         [Op.or]: [
           {
@@ -33,6 +33,8 @@ class BookServer {
           },
         ],
       },
+      offset,
+      limit: 6,
     });
   }
   async getBookByISBN(ISBN: string) {
@@ -40,6 +42,60 @@ class BookServer {
   }
   async findAllBook(offset: number, limit: number) {
     return await book.findAndCountAll({ offset, limit });
+  }
+  async addBook({
+    ISBN,
+    bookname,
+    author,
+    publishername,
+    bookpicname,
+    secondctgyid,
+    thirdctgyid,
+    originalprice,
+    desc,
+  }: {
+    ISBN: string;
+    bookname: string;
+    author: string;
+    publishername: string;
+    bookpicname: string;
+    secondctgyid: string;
+    thirdctgyid: string;
+    originalprice: string;
+    desc: string;
+  }) {
+    const discount = +(Math.random() * 0.5).toFixed(2) + 0.5;
+    const star = +(Math.random() * 0.5).toFixed(2) + 0.5;
+    return await book.create({
+      ISBN,
+      bookname,
+      author,
+      publishid: 10,
+      publishername,
+      monthsalecount: 100,
+      bookpicname,
+      secondctgyid,
+      thirdctgyid,
+      originalprice,
+      discount,
+      star,
+      desc,
+    });
+    // return {
+    //   ISBN,
+    //   bookname,
+    //   author,
+    //   publishid: 10,
+    //   publishername,
+    //   monthsalecount: 100,
+    //   bookpicname,
+    //   secondctgyid,
+    //   thirdctgyid,
+    //   originalprice,
+    //   discount,
+    //   star,
+    //   desc,
+    // };
   }
 }
 export default new BookServer();

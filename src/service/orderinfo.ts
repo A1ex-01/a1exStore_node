@@ -10,11 +10,16 @@ interface IOrderList {
   shopcartid: number;
 }
 class OrderInfoServer {
-  async addOrderInfo(orderDetailList: IOrderList[], customerid: number) {
+  async addOrderInfo(
+    orderDetailList: IOrderList[],
+    customerid: number,
+    address: string
+  ) {
     // 保存订单
     const orderinfo: any = await orderInfo.create({
       customerid,
       orderstatus: 1,
+      address,
     });
     const id = orderinfo.id;
     let result;

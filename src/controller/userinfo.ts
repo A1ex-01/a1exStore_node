@@ -14,6 +14,12 @@ class UserInfoController {
     const result = await userInfoServer.findOne({ username, psw });
     ctx.body = success(result, result ? "" : "账号不存在或账号密码错误~");
   }
+  @post("/register")
+  async register(ctx: Context) {
+    const { username, psw, phone } = ctx.request.body;
+    const result = await userInfoServer.register({ username, psw, phone }, ctx);
+    ctx.body = success(result, "注册成功~");
+  }
   @use(verfyAuth)
   @post("/")
   async getUserInfo(ctx: Context) {

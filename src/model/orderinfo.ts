@@ -28,6 +28,10 @@ class OrderInfo {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
+        address: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
       },
       { tableName: "orderinfo", timestamps: false }
     );

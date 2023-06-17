@@ -25,7 +25,7 @@ class ShopCartController {
   @use(verfyAuth)
   @post("/")
   async addShopCart(ctx: Context) {
-    const shopCart: IShopCart = ctx.request.body as IShopCart;
+    const shopCart = ctx.request.body as IShopCart;
     shopCart.userid = ctx.user.userid;
     const result = await shopCartServer.addBookToShopCart(shopCart);
     ctx.body = success(result);
@@ -58,7 +58,7 @@ class ShopCartController {
     alipayFormData.addField("return_url", return_url);
     alipayFormData.addField("biz_content", data);
     const result = await alipaySdk.exec(
-      "alipay.trade.page.pay",
+      "alipay.trade.wap.pay",
       {},
       {
         formData: alipayFormData,

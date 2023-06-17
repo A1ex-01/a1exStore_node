@@ -26,6 +26,11 @@ class CategoryController {
     const result = await categoryServer.getSecondCtgy();
     ctx.body = success(result);
   }
+  @get("/third")
+  async getAllThirdCtgy(ctx: Context) {
+    const result = await categoryServer.getThirdCtgy();
+    ctx.body = success(result);
+  }
   @get("/second/:secondId")
   async getSecondCtgy(ctx: Context) {
     const { secondId } = ctx.params;
